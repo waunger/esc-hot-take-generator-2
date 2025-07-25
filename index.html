@@ -357,8 +357,6 @@
       const years = Object.keys(countriesByYear).filter(year => year !== "2020"); // skip 2020 because it was cancelled
       const randomYear = years[Math.floor(Math.random() * years.length)];
       const countries = countriesByYear[randomYear];
-
-      // If for some reason the year has no countries (like 2020), just display a message
       if (!countries || countries.length === 0) {
         document.getElementById("output").textContent = `${randomYear} - No participating countries that year.`;
         return;
