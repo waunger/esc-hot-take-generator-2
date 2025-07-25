@@ -23,6 +23,7 @@
       "This caused a civil war in my group chat."
     ];
 
+    // Just rename your big object to countriesByYear and remove the extra "const participationByYear = {...}" inside
     const countriesByYear = {
       const participationByYear = {
 2000: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
@@ -52,11 +53,18 @@
 2024: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇹 Austria","🇦🇿 Azerbaijan","🇧🇪 Belgium","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇸 Serbia","🇸🇲 San Marino","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
 2025: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇹 Austria","🇧🇪 Belgium","🇭🇷 Croatia","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇬🇪 Georgia","🇩🇪 Germany","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇱 Israel","🇮🇹 Italy","🇱🇻 Latvia","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇲🇰 North Macedonia","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇺🇦 Ukraine","🇬🇧 United Kingdom","🇦🇺 Australia","🇸🇲 San Marino"]
 };
-
-    document.getElementById("hotTakeButton").addEventListener("click", () => {
-      const years = Object.keys(countriesByYear);
+    
+ document.getElementById("hotTakeButton").addEventListener("click", () => {
+      const years = Object.keys(countriesByYear).filter(year => year !== "2020"); // skip 2020 because it was cancelled
       const randomYear = years[Math.floor(Math.random() * years.length)];
       const countries = countriesByYear[randomYear];
+
+      // If for some reason the year has no countries (like 2020), just display a message
+      if (!countries || countries.length === 0) {
+        document.getElementById("output").textContent = `${randomYear} - No participating countries that year.`;
+        return;
+      }
+
       const randomCountry = countries[Math.floor(Math.random() * countries.length)];
       const randomTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
       document.getElementById("output").textContent = `${randomYear} - ${randomCountry}: ${randomTake}`;
