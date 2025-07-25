@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,20 +9,53 @@
       font-family: sans-serif;
       padding: 2em;
       background-color: #fef6ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1 {
+        color: #e60073;
     }
     #generateButton {
-      padding: 1em;
-      font-size: 1em;
-      margin-bottom: 1em;
+      padding: 1em 2em;
+      font-size: 1.1em;
+      margin-bottom: 1.5em;
       background-color: #e60073;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    #generateButton:hover {
+      background-color: #c0005d;
+      transform: translateY(-2px);
+    }
+    #generateButton:active {
+      background-color: #a3004b;
+      transform: translateY(0);
     }
     #hotTake {
-      font-size: 1.2em;
-      margin-top: 1em;
+      font-size: 1.4em;
+      margin-top: 1.5em;
+      text-align: center;
+      max-width: 800px;
+      line-height: 1.5;
+      color: #333;
+      padding: 1.5em;
+      border: 2px dashed #e60073;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .year-country-info {
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 0.5em;
     }
   </style>
 </head>
@@ -43,7 +76,7 @@
         "If this was from Sweden, it would've won.",
         "A cult classic.",
         "You either love it or you're wrong.",
-        "This caused a civil war in my group chat."
+        "This caused a civil war in my group chat.",
         "Robbed. I don’t care what anyone says—this should’ve qualified. Absolute disgrace.",
         "They gave it everything and still the jury snubbed them. Total daylight robbery.",
         "Okay but why did the staging look like a fever dream? I’m still trying to process it.",
@@ -85,49 +118,6 @@
         "Vocals sounding like fish tank reverb—mixing sabotage, really.",
         "That mix was so bad I thought my TV was cursed.",
         "This song sounded like roadkill—no bass, no energy.",
-        "That jacket and trumpet combo? Eurovision purgatory called—it wants its staging back.",
-        "Looks like their designer rage-quit mid-build and someone else winged it."
-        "Robbed. I don’t care what anyone says—this should’ve qualified. Absolute disgrace.",
-        "They gave it everything and still the jury snubbed them. Total daylight robbery.",
-        "Okay but why did the staging look like a fever dream? I’m still trying to process it.",
-        "With how poorly this did, it's obvious that juries need to be reformed… fishy as last year… How can juries be fair? Saying this for years.",
-        "Vocals giving discount Coldplay—can we get a refund?",
-        "This had all the drama of a rave and none of the control. A mess in platform shoes.",
-        "It sounded like growls and shrieks auditioning for a death metal side act.",
-        "Clean mixing or bad setup? Either way, please stop calling it vocals.",
-        "Vocals are fine if you squint—I feel like I'm listening underwater.",
-        "Pitchy as heck but confident? Nothing says bold like singing off key at Eurovision.",
-        "It’s like someone autotuned a cat fight. Unapologetically chaotic.",
-        "Vocals drowning in synths like a bad karaoke meltdown.",
-        "When they call it power vocals but it really sounds like they’re power-walking through pitch.",
-        "Sing me a ballad? More like sing me flat. Enough already.",
-        "That chorus needed breath control—they were racing the beat and losing.",
-        "The staging gasped for breath and so did the singer. Literally.",
-        "Mic dropped the vocals and apparently forgot to pick them up again.",
-        "This isn't singing—it’s a vocal gymnastics fail in glitter form."
-        "Another solo female surrounded by creepy male stalk-dancers—groundbreaking originality, love that for us.",
-        "Costume looked torn and dirty, like they raided a dumpster for outfits.",
-        "Doing sexy in tourist trap outfits? Fewer crotch grabs, more actual talent please.",
-        "The costume felt like a trash bag cosplay stuck in a rave gone wrong.",
-        "Too much skin and not enough substance—Eurovision or OnlyFans audition?",
-        "Half-naked dancers and no tune—some justification please, Europe!",
-        "It’s like every budget ran out except for the wardrobe department.",
-        "Stopping for breath in the chorus because outfit was too tight—priorities gone wrong.",
-        "That mid-song costume change felt like performance art sabotage.",
-        "They delivered a fever dream, then went into a closet with no clothes on stage.",
-        "Staging looked like glam goth in a public urinal—uncomfortable art or what?",
-        "Tiny dancers everywhere, and yet the song was still invisible.",
-        "I saw more naked parts than actual choreography.",
-        "When they call it sexy staging and you call it audience offense.",
-        "They aimed for shock and landed somewhere between cringe and regret.",
-        "That outfit should’ve had a warning label on family TV."
-        "Year after year of bad vocals, but this time every note felt like a war crime.",
-        "Can’t hear the live voice—backing track swallowed the singer whole.",
-        "The mix buried the main vocal—felt like karaoke with no mic.",
-        "Broadcast sounded like someone turned the singer into background noise.",
-        "Vocals sounding like fish tank reverb—mixing sabotage, really.",
-        "That mix was so bad I thought my TV was cursed.",
-        "This song sounded like roadkill—no bass, no energy.
         "That semi-final performance was so disappointing - no energy, no survival instinct on stage.",
         "Staging tried copying the video but the voice fell flat - always was a meh song.",
         "This performance deserved zero points. Thank Iceland for the pity points.",
@@ -138,7 +128,7 @@
         "17th place? That's staging sabotage before the act even started.",
         "Performance looked glittery until the camera cut—then silence.",
         "Fail so epic it made other flops look hopeful.",
-        "A turtle shell was more expressive than the singer on stage."
+        "A turtle shell was more expressive than the singer on stage.",
         "Everyone hyped them like gods—and they delivered stadium-level mediocrity.",
         "Fan fav? More like fan fad. Already forgotten before the final ended.",
         "Loved by fandoms, hated by common sense—this song aged poorly.",
@@ -153,8 +143,8 @@
         "Bathing in fan love, drowning in general indifference.",
         "Looks good on merch, sounds bland on air. Fanboys out here gaslighting us.",
         "Song built hype, not hooks. The fandom still don’t care.",
-        "Trendy among the fandom elite, but it flopped everywhere else."
-        "It had all the dance moves and zero charm; the butt‑wiggle was cringe, not iconic."
+        "Trendy among the fandom elite, but it flopped everywhere else.",
+        "It had all the dance moves and zero charm; the butt‑wiggle was cringe, not iconic.",
         "Sure, it didn’t score high, but the emotion in that performance was unmatched.",
         "This song is basically Imagine Dragons’ rejected B-side—but somehow got on the Eurovision stage. Fight me.",
         "Sounds like a budget Coldplay auditioning for the backup singer role—overhyped and underwhelming.",
@@ -200,12 +190,12 @@
         "Can someone please explain how this was allowed on stage? I’m about to stop watching forever.",
         "This was so embarrassing I’m considering handing in my fan card.",
         "I lost all faith in Eurovision’s quality after this. Turning off, permanently.",
-        "I nearly smashed my TV. This performance was a disgrace to the contest."
+        "I nearly smashed my TV. This performance was a disgrace to the contest.",
         "This was so cringe-inducing, I muted and walked away. Might not come back next year.",
         "That staging was a disaster—I felt embarrassed watching it live and almost gave up on Eurovision.",
         "I legit shouted at my screen and turned off the stream. This was the final straw for me.",
         "I had to pause just to breathe after that performance. Eurovision, please stop doing this to us.",
-        "Almost deleted the app after watching that mess. How did this even get to the final?"
+        "Almost deleted the app after watching that mess. How did this even get to the final?",
         "How on earth did this masterpiece not qualify?! Eurovision clearly has lost all sense.",
         "This was robbed harder than any contestant in history. I’m still screaming into the void.",
         "The only injustice here is that this gem didn’t make it to the final. Absolutely gutted.",
@@ -220,7 +210,7 @@
         "They killed it live and still didn’t qualify? Somebody explain this injustice now.",
         "If this isn’t proof Eurovision voters don’t get it, I don’t know what is.",
         "I’m raging over here because this song was robbed of the chance it deserved.",
-        "Every time I think about this non-qualification, I want to scream at my screen."
+        "Every time I think about this non-qualification, I want to scream at my screen.",
         "The jury must’ve been asleep or on vacation during that performance—how else do you explain this nonsense?",
         "Can someone explain the jury’s logic? Because I’m seriously lost in the sauce here.",
         "The jury’s voting felt like a bad joke, and we’re all the punchline.",
@@ -235,7 +225,7 @@
         "The jury missed the point entirely, and the fans are left picking up the pieces.",
         "How do you give zero points to a performance that moved the entire arena? Jury, explain yourself.",
         "The jury’s votes are a mystery wrapped in a riddle soaked in pure nonsense.",
-        "The jury completely butchered the results—this is Eurovision sabotage, plain and simple."
+        "The jury completely butchered the results—this is Eurovision sabotage, plain and simple.",
         "This song’s only win was a political free pass. Zero talent, 100% nepotism.",
         "Eurovision’s supposed to celebrate music, not political alliances disguised as votes.",
         "Qualified because of diplomatic favors, not because anyone actually liked it. Sad.",
@@ -266,14 +256,14 @@
         "Haters will say it’s mediocre, but I’ll defend this song with my last breath.",
         "It’s a slow burn, a hidden gem, and one day it’ll be hailed as a masterpiece.",
         "This track didn’t just compete—it *owned* the stage in a way no one else dared to.",
-        "Mark my words: this song is the truest expression of Eurovision’s heart and soul."
+        "Mark my words: this song is the truest expression of Eurovision’s heart and soul.",
         "Love the staging and outfits but the song is meh. Maybe it was just too early in the running order?",
         "People slept on this, but the songwriting and vibe were way ahead of its time.",
         "They didn’t win, but that voice could move mountains—absolute underrated talent.",
         "The staging was minimal, but it let the raw vocals shine through beautifully.",
         "Overlooked by many, cherished by those who appreciate true artistry.",
         "Sometimes numbers don’t tell the whole story—this song was proof.",
-        "An emotional rollercoaster that deserved to make more waves."
+        "An emotional rollercoaster that deserved to make more waves.",
         "Flop in points, gem in my playlist—this song grew on me every replay.",
         "It lacked spectacle but had authenticity in spades—can’t fake that.",
         "The perfect blend of melancholy and hope, completely misunderstood by juries.",
@@ -291,7 +281,7 @@
         "While not mainstream, it’s a cult classic in the making for those who appreciate bold artistry.",
         "They may not have scored well, but they definitely left a mark on the contest.",
         "Loved the eccentric vibes and the storytelling—it wasn’t for everyone, but it was for me.",
-        "Underappreciated gem with so much character and personality."
+        "Underappreciated gem with so much character and personality.",
         "This masterpiece *should’ve* won back in the golden era—Eurovision sold its soul chasing trends.",
         "They didn’t stand a chance against today’s noise—but back in the ‘90s, this would’ve *slayed*.",
         "If this had dropped in the 2000s, it’d be the anthem every fan worships to this day. Fight me.",
@@ -306,7 +296,7 @@
         "It was so far ahead that it crashed the Eurovision matrix. People just weren’t ready.",
         "I’d fight a legion of trolls defending this as one of the greatest songs Eurovision *never* properly appreciated.",
         "This is not a flop—it’s a *misaligned masterpiece* that would’ve reshaped the contest if given the chance.",
-        "Forget the scoreboard—this song is a piece of history that only future generations will truly get."
+        "Forget the scoreboard—this song is a piece of history that only future generations will truly get.",
         "This was pure chaos and charm—snubbed and overlooked like every underrated classic before it.",
         "This was robbed on an epic scale. The staging was next level, vocals were tight, and they still didn’t make it?!",
         "I was ready to crown them as a winner, but apparently, the rest of Eurovision didn’t get the memo.",
@@ -328,7 +318,7 @@
         "Every time I hear this song, I’m reminded how much the jury missed the mark.",
         "This track was a revolution ignored by the jury—but I’m here to keep its flame burning.",
         "Jury’s loss, fans’ gain—this song will go down as a cult classic no matter what.",
-        "I stand with this song 100%—no jury vote will ever change that fact."
+        "I stand with this song 100%—no jury vote will ever change that fact.",
         "This song didn’t qualify on merit—it’s all politics and backroom deals. Eurovision is losing its soul.",
         "If politics is winning Eurovision now, I’m officially done. Where’s the talent?",
         "Qualified because of voting blocs and alliances, not because they earned it. Pathetic.",
@@ -346,47 +336,56 @@
         "I’m bitter and vocal—this qualification was a slap in the face to every real artist.",
       ];
 
-    const countriesByYear = {
-      2000: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2001: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2002: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden","🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2003: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece","🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2004: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2005: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2006: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2007: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
-      2008: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇹 Austria","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇹🇷 Turkey","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2009: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇹 Austria","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇹🇷 Turkey","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2010: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇿 Azerbaijan","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇹🇷 Turkey","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2011: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇿 Azerbaijan","🇦🇹 Austria","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇹🇷 Turkey","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2012: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇿 Azerbaijan","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇹🇷 Turkey","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2013: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇿 Azerbaijan","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2014: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇿 Azerbaijan","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2015: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇿 Azerbaijan","🇦🇺 Australia","🇦🇹 Austria","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇬🇧 United Kingdom"],
-      2016: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇿 Azerbaijan","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2017: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇿 Azerbaijan","🇦🇹 Austria","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇦 Bosnia and Herzegovina","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2018: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇿 Azerbaijan","🇦🇹 Austria","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2019: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇿 Azerbaijan","🇦🇹 Austria","🇧🇾 Belarus","🇧🇪 Belgium","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2020: ["❌ Cancelled due to COVID-19"],
-      2021: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇿 Azerbaijan","🇦🇹 Austria","🇧🇪 Belgium","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇺 Russia","🇸🇲 San Marino","🇷🇸 Serbia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇲🇰 North Macedonia","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2022: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇿 Azerbaijan","🇦🇹 Austria","🇧🇪 Belgium","🇧🇬 Bulgaria","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇸 Serbia","🇸🇲 San Marino","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2023: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇹 Austria","🇦🇿 Azerbaijan","🇧🇪 Belgium","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇸 Serbia","🇸🇲 San Marino","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2024: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇺 Australia","🇦🇹 Austria","🇦🇿 Azerbaijan","🇧🇪 Belgium","🇭🇷 Croatia","🇨🇾 Cyprus","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇩🇪 Germany","🇬🇷 Greece","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇹 Italy","🇱🇻 Latvia","🇱🇹 Lithuania","🇲🇹 Malta","🇲🇩 Moldova","🇳🇱 Netherlands","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇸 Serbia","🇸🇲 San Marino","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇺🇦 Ukraine","🇬🇧 United Kingdom"],
-      2025: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇹 Austria","🇧🇪 Belgium","🇭🇷 Croatia","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇬🇪 Georgia","🇩🇪 Germany","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇱 Israel","🇮🇹 Italy","🇱🇻 Latvia","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇲🇰 North Macedonia","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇺🇦 Ukraine","🇬🇧 United Kingdom","🇦🇺 Australia","🇸🇲 San Marino"]
+      const countriesByYear = {
+        2000: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
+        2001: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
+        2002: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden","🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
+        2003: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece","🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
+        2004: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇪 Belgium", "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia and Montenegro", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇬🇧 United Kingdom"],
+        2005: ["🇦🇱 Albania", "🇦🇹 Austria", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇨 Monaco", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇷🇸 Serbia and Montenegro", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2006: ["🇦🇱 Albania", "🇦🇳 Andorra", "🇦🇲 Armenia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇨 Monaco", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇷🇸 Serbia", "🇲🇪 Montenegro", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2007: ["🇦🇱 Albania", "🇦🇳 Andorra", "🇦🇲 Armenia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇨 Monaco", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇷🇸 Serbia", "🇲🇪 Montenegro", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2008: ["🇦🇱 Albania", "🇦🇳 Andorra", "🇦🇲 Armenia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇳 Monaco", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2009: ["🇦🇱 Albania", "🇦🇳 Andorra", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇨 Monaco", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2010: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2011: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2012: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2013: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2014: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2015: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2016: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2017: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇿 Azerbaijan", "🇦🇺 Australia", "🇦🇹 Austria", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2018: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇪 Montenegro", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2019: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇪 Montenegro", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2020: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"], // Canceled due to COVID-19, but participants were selected
+        2021: ["🇦🇱 Albania", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇾 Belarus", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇺 Russia", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2022: ["🇦🇱 Albania", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇲🇰 North Macedonia", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇪 Montenegro", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2023: ["🇦🇱 Albania", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2024: ["🇦🇱 Albania", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
+        2025: ["🇦🇱 Albania", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇪 Belgium", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇩🇪 Germany", "🇬🇪 Georgia", "🇬🇷 Greece", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"]
       };
-          
-    function getRandomElement(arr) {
+
+      const generateButton = document.getElementById('generateButton');
+      const hotTakeDisplay = document.getElementById('hotTake');
+
+      function getRandomElement(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
       }
 
-      function generateHotTake() {
-        const year = getRandomElement(Object.keys(entriesByYear));
-        const country = getRandomElement(entriesByYear[year]);
-        const hotTake = getRandomElement(hotTakes);
-        document.getElementById('hotTake').textContent = ${country} (${year}): ${hotTake};
+      function generateFullHotTake() {
+        const randomTake = getRandomElement(hotTakes);
+
+        const years = Object.keys(countriesByYear);
+        const randomYear = getRandomElement(years);
+        const countriesForYear = countriesByYear[randomYear];
+        const randomCountry = getRandomElement(countriesForYear);
+
+        // Construct the full hot take with year and country
+        hotTakeDisplay.innerHTML = `<span class="year-country-info">${randomCountry} ${randomYear}: </span>${randomTake}`;
       }
 
-      document.getElementById('generateButton').addEventListener('click', generateHotTake);
+      // Attach the event listener to the button
+      generateButton.addEventListener('click', generateFullHotTake);
     });
   </script>
 </body>
