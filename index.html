@@ -353,18 +353,22 @@
 2025: ["🇦🇱 Albania","🇦🇲 Armenia","🇦🇹 Austria","🇧🇪 Belgium","🇭🇷 Croatia","🇨🇿 Czechia","🇩🇰 Denmark","🇪🇪 Estonia","🇫🇮 Finland","🇫🇷 France","🇬🇪 Georgia","🇩🇪 Germany","🇮🇸 Iceland","🇮🇪 Ireland","🇮🇱 Israel","🇮🇹 Italy","🇱🇻 Latvia","🇲🇹 Malta","🇲🇩 Moldova","🇲🇪 Montenegro","🇳🇱 Netherlands","🇲🇰 North Macedonia","🇳🇴 Norway","🇵🇱 Poland","🇵🇹 Portugal","🇷🇴 Romania","🇷🇸 Serbia","🇸🇰 Slovakia","🇸🇮 Slovenia","🇪🇸 Spain","🇸🇪 Sweden","🇨🇭 Switzerland","🇺🇦 Ukraine","🇬🇧 United Kingdom","🇦🇺 Australia","🇸🇲 San Marino"]
 };
     
- document.getElementById("hotTakeButton").addEventListener("click", () => {
-      const years = Object.keys(countriesByYear).filter(year => year !== "2020"); // skip 2020 because it was cancelled
-      const randomYear = years[Math.floor(Math.random() * years.length)];
-      const countries = countriesByYear[randomYear];
-      if (!countries || countries.length === 0) {
-        document.getElementById("output").textContent = `${randomYear} - No participating countries that year.`;
-        return;
-      }
+function generateEurovisionHotTake(countriesByYear, hotTakes) {
+  const years = Object.keys(countriesByYear).filter(year => year !== "2020");
+  const randomYear = years[Math.floor(Math.random() * years.length)];
+  const countries = countriesByYear[randomYear];
 
-      const randomCountry = countries[Math.floor(Math.random() * countries.length)];
-      const randomTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
-      document.getElementById("output").textContent = `${randomYear} - ${randomCountry}: ${randomTake}`;
+  if (!countries || countries.length === 0) {
+    return `${randomYear} - No participating countries that year.`;
+  }
+
+  const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+  const randomTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
+  return `${randomYear} - ${randomCountry}: ${randomTake}`;
+}
+    document.getElementById("hotTakeButton").addEventListener("click", () => {
+      const output = generateEurovisionHotTake(countriesByYear, hotTakes);
+      document.getElementById("output").textContent = output;
     });
   </script>
 </body>
