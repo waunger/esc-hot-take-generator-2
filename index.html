@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eurovision Hot Take Generator</title>
+</head>
+<body>
+  <h1>🎤 Eurovision Hot Take Generator 🎤</h1>
+  <button id="hotTakeButton">Give me a random hot take</button>
+  <p id="output"></p>
+
+  <script>
+    const hotTakes = [
+      "Robbed. Simply robbed.",
+      "This would've won if it had been in Swedish.",
+      "Only the gays understood this.",
+      "The jury system is a scam and this proves it.",
+      "Europe wasn’t ready.",
+      "This sent me to another dimension.",
+      "If this was from Sweden, it would've won.",
+      "A cult classic.",
+      "You either love it or you're wrong.",
+      "This caused a civil war in my group chat."
+    ];
+
+    const countriesByYear = {
+      2025: [
+        "🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇹 Austria", "🇧🇪 Belgium",
+        "🇭🇷 Croatia", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia",
+        "🇫🇮 Finland", "🇫🇷 France", "🇬🇪 Georgia", "🇩🇪 Germany",
+        "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy",
+        "🇱🇻 Latvia", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇪 Montenegro",
+        "🇳🇱 Netherlands", "🇲🇰 North Macedonia", "🇳🇴 Norway",
+        "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇷🇸 Serbia",
+        "🇸🇰 Slovakia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden",
+        "🇨🇭 Switzerland", "🇺🇦 Ukraine", "🇬🇧 United Kingdom",
+        "🇦🇺 Australia", "🇸🇲 San Marino"
+      ]
+    };
+
+    document.getElementById("hotTakeButton").addEventListener("click", () => {
+      const years = Object.keys(countriesByYear);
+      const randomYear = years[Math.floor(Math.random() * years.length)];
+      const countries = countriesByYear[randomYear];
+      const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+      const randomTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
+      document.getElementById("output").textContent = `${randomYear} - ${randomCountry}: ${randomTake}`;
+    });
+  </script>
+</body>
+</html>
