@@ -41,6 +41,7 @@
             width: 100%;
             max-width: 800px;
             box-sizing: border-box;
+            margin-bottom: 2em; /* Added space for the second section */
         }
 
         h1 {
@@ -52,7 +53,7 @@
             text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
         }
 
-        #generateButton {
+        #generateButton, #generateSpecificButton {
             background-color: var(--accent-pink);
             color: white;
             border: none;
@@ -67,19 +68,19 @@
             letter-spacing: 0.5px;
         }
 
-        #generateButton:hover {
+        #generateButton:hover, #generateSpecificButton:hover {
             background-color: #ff6b81;
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4);
         }
 
-        #generateButton:active {
+        #generateButton:active, #generateSpecificButton:active {
             background-color: #c0005d;
             transform: translateY(0);
             box-shadow: 0 4px 10px var(--shadow-light);
         }
 
-        #hotTakeDisplayContainer { /* New container for better layout control */
+        #hotTakeDisplayContainer, #specificHotTakeDisplayContainer { /* New container for better layout control */
             background-color: var(--dark-text-display);
             border: 2px solid var(--border-color);
             padding: 30px;
@@ -96,7 +97,7 @@
             word-wrap: break-word;
         }
 
-        #hotTake { /* Actual hot take text */
+        #hotTake, #specificHotTake { /* Actual hot take text */
             font-size: 1.3em;
             line-height: 1.6;
             color: #bbbbbb;
@@ -104,12 +105,79 @@
             margin-top: 10px; /* Space between info and hot take */
         }
 
-        .year-country-info { /* Styling for the year and country */
+        .year-country-info, .specific-year-country-info { /* Styling for the year and country */
             font-size: 1.6em; /* Make it significantly bigger */
             font-weight: 700; /* Make it bold */
             color: var(--accent-blue); /* A contrasting color */
             margin-bottom: 10px; /* Space above hot take */
         }
+
+        .input-group {
+            margin-bottom: 1.5em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em; /* Space between selects */
+        }
+
+        .input-group label {
+            font-size: 1.1em;
+            color: var(--light-text);
+            margin-right: 0.5em;
+            display: block; /* Make label stack on small screens */
+            text-align: left;
+            width: 100%; /* Take full width on small screens */
+            margin-bottom: 0.5em;
+        }
+        .input-group div {
+            flex-basis: 45%; /* Distribute items in two columns */
+            min-width: 150px; /* Ensure minimum width for readability */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content within its flex basis */
+        }
+
+
+        .input-group select {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background-color: var(--dark-card);
+            color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            -webkit-appearance: none; /* Remove default dropdown arrow for custom styling */
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23bae8e8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.6-6.4H19.6c-5%200-9.3%201.8-13.6%206.4-4.2%204.2-6.4%209.3-6.4%2014.3%200%205%202.1%2010.1%206.4%2014.3l119.2%20119.1c4.2%204.2%209.3%206.4%2014.3%206.4s9.3-2.1%2014.3-6.4l119.2-119.1c4.2-4.2%206.4-9.3%206.4-14.3-.1-5-2.2-10.1-6.4-14.3z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 1em auto;
+            min-width: 180px; /* Ensure selects are wide enough */
+        }
+
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
+        }
+
+        .section-title {
+            color: var(--accent-blue);
+            font-size: 1.8em;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .input-group div {
+                flex-basis: 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -122,9 +190,29 @@
         </div>
     </div>
 
+    <div class="container">
+        <h2 class="section-title">Get a Hot Take for a Specific Year & Country</h2>
+        <div class="input-group">
+            <div>
+                <label for="yearSelect">Select Year:</label>
+                <select id="yearSelect"></select>
+            </div>
+            <div>
+                <label for="countrySelect">Select Country:</label>
+                <select id="countrySelect" disabled></select>
+            </div>
+        </div>
+        <button id="generateSpecificButton">Generate Specific Hot Take</button>
+        <div id="specificHotTakeDisplayContainer">
+            <div id="specificInfoDisplay" class="specific-year-country-info">Select a year and country!</div>
+            <div id="specificHotTake"></div>
+        </div>
+    </div>
+
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const hotTakes = [
+            const hotTakes = 
                 "Robbed. Simply robbed. I'm actually sobbing in my bathroom over it",
                 "How did this not make it? Arguably the most Eurovision song of them all, with the exception of a couple others. I know it wasn't for everyone but it really threw me through a look because he really did amazing with the performance and imo (plus charisma, stage use, props, etc..)",
                 "I feel like it might be because the staging was not 100% as good as the music video. I looooved the song and would've loved to see it in the final but even I was a bit disappointed about what they did on stage - it just fell a bit short after the super fun mv :(",
@@ -134,7 +222,7 @@
                 "This would've won if it had been in Swedish.",
                 "JUSTICE FOR THIS SONG! SOOOOOO ROBBED",
                 "The artist was 🤷‍♂️. not the best singer but a catchy tune",
-                "The staging has n animation quality so poor it must be AI-generated. Like, why is it so bad, and why does it go on for so long? Is it intentional? Is this psychological warfare? Am I a casualty? I feel like a casualty.",
+                "The staging has an animation quality so poor it must be AI-generated. Like, why is it so bad, and why does it go on for so long? Is it intentional? Is this psychological warfare? Am I a casualty? I feel like a casualty.",
                 "THIS is the year THIS country qualifies????? With THIS SONG??? What???? We had the same song but [slightly] better, almost-identical chord progressions and all, and now we have to go through it twice in the final!?",
                 "I went to the bathroom during that whole nonsense 😂", 
                 "This song reminds me of the random English words in anime openings 'because it sounds cool'",
@@ -148,12 +236,12 @@
                 "I just feels it. I might be wrong though but I don't believe it really has a chance to be top 3. Don't see them slaying televoting (probably fairly decent score though).",
                 "It's in my top 5. It's a shame I can't vote for it in the semis. I will be praying just like I did for a past entry last year 🤞🤞",
                 "Europe wasn’t ready for this absolute masterpiece. This was better than not only the winner this year, but in all years prior.",
-                "This sent me to another dimension.",
+                "This sent me to another dimension. It's absolute cinema and anyone who says otherwise is wrong",
                 "If this was from Sweden, it would've won.",
                 "Over-sexualized entries don't always win people over. People might still like it a lot, but I think it's far from as certain of a top 5 as the odds would have it",
                 "This song is a complete mess. A friend from a neighboring country said it was really silly, although it undoubtedly got points from that country",
                 "You either love it or you're wrong.",
-                "This caused a civil war in my group chat.",
+                "Honestly, I never got the hype around this song. The production is so basic, it's nothing special. Good song, but definitely not winner material. Way too overrated, probably my #15 this year."
                 "Robbed. I don’t care what anyone says—this should’ve qualified. Absolute disgrace.",
                 "They gave it everything and still the jury snubbed them. Total daylight robbery.",
                 "Okay but why did the staging look like a fever dream? I’m still trying to process it.",
@@ -162,13 +250,18 @@
                 "This had all the drama of a rave and none of the control. A mess in platform shoes.",
                 "It sounded like growls and shrieks auditioning for a death metal side act.",
                 "Vocals are fine if you squint—I feel like I'm listening underwater.",
+                "Unpopular opinion: I freaking love this song and I wanted it to win! People trash talk it only because of where it's from. If an average American singer did it, everyone would eat it up."
                 "Pitchy as heck but confident? Nothing says bold like singing off key at Eurovision.",
                 "It’s like someone autotuned a cat fight. Unapologetically chaotic.",
                 "I don't get why people like this one so much, a song about a person just saying how awesome they are is incredibly annoying, and I fully relished in seeing them not qualify.",
                 "Vocals drowning in synths like a bad karaoke meltdown.",
-                "When they call it power vocals but it really sounds like they’re power-walking through pitch.",
-                "Sing me a ballad? More like sing me flat. Enough already.",
+                "The whole discourse around this song has me rolling my eyes. It's giving me 'people didn't get it' vibes. Twenty years from now, we're going to look back on it as a camp classic and bemoan how serious everyone takes this now."
+                "I'm still salty about how the jury had too much power and this song won over a clear fan favorite with like over half the public vote. Total rigged selection."
+                "This song is sending its country straight back to its darker years. It's the worst. The baby voice is just terrible. What a glow down."
+                "Sing me a ballad? More like sing me flat. Enough already. This belongs in the trash, it's my 35th place",
                 "That chorus needed breath control—they were racing the beat and losing.",
+                "Everyone's favorite sweaty artist singing a song written by people from another country. Shock qualifier, but I loved it! Energetic performance, even if it missed almost everyone."
+                "I actually had to unfollow people on social media because they called this song 'satanic' and the 'downfall of society.' To me, it was pure art and probably the best overall performance ever. Empowering, actually."
                 "The staging gasped for breath and so did the singer. Literally.",
                 "Mic dropped the vocals and apparently forgot to pick them up again.",
                 "This isn't singing—it’s a vocal gymnastics fail in glitter form.",
@@ -253,18 +346,26 @@
                 "The lighting tried to save it, but bad moves and worse staging left it drowning in neon regret.",
                 "This looked like a rehearsal tape someone accidentally broadcasted. Eurovision deserves better.",
                 "I was ready to throw my remote through the TV—this performance was that unbearable.",
+                "The continued shift towards more joke songs is just terrible. I want to bring back the era of more serious entries."
                 "If this is the future of Eurovision, I’m officially done. Cancel my subscription to this mess.",
                 "Turned off my TV mid-performance. I refuse to watch this disaster unfold any longer.",
+                "This song is in my top 10 for sure. It just has a great vibe."
+                "Bottom 10 for this song, unfortunately. I had higher hopes."
+                "It's divisive, but this song is definitely in my top 5. Some people hate it, but I see the genius."
                 "This was so bad, I considered quitting Eurovision for good. Someone save me from this nightmare.",
                 "Watching this felt like punishment—seriously debating if I want to watch next year.",
                 "I screamed at my screen and turned it off. This was not what I signed up for.",
                 "That was the final straw—no more Eurovision for me if this is the standard.",
                 "I nearly walked out of the room. This was a cringe fest on a level I’ve never seen.",
                 "How did this even get past rehearsals? I almost quit watching right then and there.",
+                "This song is my guilty pleasure, probably sits around #12 or #13 for me this year."
                 "This made me question my entire life choices and love for Eurovision. I’m shook—in the worst way.",
                 "I muted the sound and just stared in disbelief. That was Eurovision? No thanks.",
+                "I had this song as my #7, but after the live performance, it dropped to my bottom 10. The staging just didn't work."
+                "This song is in my bottom 5 this year, easy. I just can't stand it."
                 "Can someone please explain how this was allowed on stage? I’m about to stop watching forever.",
                 "This was so embarrassing I’m considering handing in my fan card.",
+                "Seriously, this song is criminally underrated. The most elegant, sophisticated ballad this year IMO. It's a pure crime it's so low on the scoreboard."
                 "I lost all faith in Eurovision’s quality after this. Turning off, permanently.",
                 "I nearly smashed my TV. This performance was a disgrace to the contest.",
                 "This was so cringe-inducing, I muted and walked away. Might not come back next year.",
@@ -409,7 +510,7 @@
                 2025: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇬🇪 Georgia", "🇩🇪 Germany", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇪 Montenegro", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"],
             };
 
-            const countryCodeMap = {
+             const countryCodeMap = {
                 "Albania": "AL", "Andorra": "AD", "Armenia": "AM", "Australia": "AU", "Austria": "AT", "Azerbaijan": "AZ", "Belarus": "BY", "Belgium": "BE", "Bosnia and Herzegovina": "BA", "Bulgaria": "BG", "Croatia": "HR", "Cyprus": "CY", "Czechia": "CZ", "Denmark": "DK", "Estonia": "EE", "Finland": "FI", "France": "FR", "North Macedonia": "MK", "Germany": "DE", "Georgia": "GE", "Greece": "GR", "Hungary": "HU", "Iceland": "IS", "Ireland": "IE", "Israel": "IL", "Italy": "IT", "Latvia": "LV", "Lithuania": "LT", "Malta": "MT", "Moldova": "MD", "Monaco": "MC", "Montenegro": "ME", "Netherlands": "NL", "Norway": "NO", "Poland": "PL", "Portugal": "PT", "Romania": "RO", "Russia": "RU", "San Marino": "SM", "Serbia": "RS", "Serbia and Montenegro": "CS", "Slovenia": "SI", "Spain": "ES", "Sweden": "SE", "Switzerland": "CH", "Turkey": "TR", "Ukraine": "UA", "United Kingdom": "GB"
             };
 
@@ -417,50 +518,512 @@
             const hotTakeDisplay = document.getElementById('hotTake');
             const infoDisplay = document.getElementById('infoDisplay');
 
+            // New elements for specific generation
+            const yearSelect = document.getElementById('yearSelect');
+            const countrySelect = document.getElementById('countrySelect');
+            const generateSpecificButton = document.getElementById('generateSpecificButton');
+            const specificHotTakeDisplay = document.getElementById('specificHotTake');
+            const specificInfoDisplay = document.getElementById('specificInfoDisplay');
+
+
+            // Function to populate the year dropdown
+            function populateYearSelect() {
+                const years = Object.keys(countriesByYear).sort((a, b) => b - a); // Sort descending
+                yearSelect.innerHTML = '<option value="">Select a Year</option>'; // Default option
+                years.forEach(year => {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                });
+            }
+
+            // Function to populate the country dropdown based on selected year
+            function populateCountrySelect(year) {
+                countrySelect.innerHTML = '<option value="">Select a Country</option>'; // Default option
+                countrySelect.disabled = true; // Disable until a year is selected
+
+                if (year && countriesByYear[year]) {
+                    const countries = countriesByYear[year].sort((a, b) => {
+                         // Extract country name without emoji for sorting
+                        const nameA = a.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
+                        const nameB = b.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
+                        return nameA.localeCompare(nameB);
+                    });
+                    countries.forEach(country => {
+                        const option = document.createElement('option');
+                        option.value = country;
+                        option.textContent = country;
+                        countrySelect.appendChild(option);
+                    });
+                    countrySelect.disabled = false; // Enable once countries are loaded
+                }
+            }
+
+            // Event listener for the random hot take button
             generateButton.addEventListener('click', () => {
                 const years = Object.keys(countriesByYear);
                 const selectedYear = years[Math.floor(Math.random() * years.length)];
 
                 const countriesForSelectedYear = countriesByYear[selectedYear];
                 const selectedCountryName = countriesForSelectedYear[Math.floor(Math.random() * countriesForSelectedYear.length)];
-                
-                // Extract country name from string (e.g., "🇦🇱 Albania" -> "Albania")
+
                 const countryNameWithoutEmoji = selectedCountryName.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
                 const selectedCountryCode = countryCodeMap[countryNameWithoutEmoji];
 
                 let finalHotTake = "";
-                let hotTakeTriggered = false; // Flag to check if a special hot take was used
+                let hotTakeTriggered = false;
 
-                // Define special hot takes and their conditions
                 const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
                 const maltaTriggerYear = "2025";
                 const maltaCountryCode = "MT";
-                const maltaTriggerChance = 0.5; // 50% chance for Malta 2025
+                const maltaTriggerChance = 0.5;
 
                 const specialSwedenHotTake = "This song would not even qualify if it wasn't Sweden who sent it, let's be honest. This is unlistenable pop slop and I'm not even remotely sorry for this opinion tbh. It's an actual crime that this is going to automatically finish top 10";
-                const swedenCountryCode = "SE"; // No specific year for Sweden now
-                const swedenTriggerChance = 0.2; // 20% chance for ANY Sweden entry
+                const swedenCountryCode = "SE";
+                const swedenTriggerChance = 0.2;
 
-                // Check for Malta 2025 first (year-specific)
                 if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
                     finalHotTake = specialMaltaHotTake;
                     hotTakeTriggered = true;
-                } 
-                // If Malta wasn't triggered, check for Sweden (any year)
+                }
                 else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
                     finalHotTake = specialSwedenHotTake;
                     hotTakeTriggered = true;
                 }
 
-                // If no special hot take was triggered, pick a random one from the general list
                 if (!hotTakeTriggered) {
-                    finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
+                    // Randomly choose between general hot takes and ranking takes
+                    const useRankingTake = Math.random() < 0.3; // 30% chance for a ranking take
+                    if (useRankingTake && rankingTakes.length > 0) {
+                        finalHotTake = rankingTakes[Math.floor(Math.random() * rankingTakes.length)];
+                    } else {
+                        finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
+                    }
                 }
 
                 infoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
                 hotTakeDisplay.textContent = finalHotTake;
             });
+
+            // Event listener for year select change
+            yearSelect.addEventListener('change', (event) => {
+                const selectedYear = event.target.value;
+                populateCountrySelect(selectedYear);
+                // Reset specific display when year changes
+                specificInfoDisplay.textContent = "Select a year and country!";
+                specificHotTakeDisplay.textContent = "";
+            });
+
+            // Event listener for the specific hot take button
+            generateSpecificButton.addEventListener('click', () => {
+                const selectedYear = yearSelect.value;
+                const selectedCountryName = countrySelect.value;
+
+                if (!selectedYear || !selectedCountryName) {
+                    specificInfoDisplay.textContent = "Please select both a year and a country!";
+                    specificHotTakeDisplay.textContent = "";
+                    return;
+                }
+
+                const countryNameWithoutEmoji = selectedCountryName.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
+                const selectedCountryCode = countryCodeMap[countryNameWithoutEmoji];
+
+                let finalHotTake = "";
+                let hotTakeTriggered = false;
+
+                const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
+                const maltaTriggerYear = "2025";
+                const maltaCountryCode = "MT";
+                const maltaTriggerChance = 0.5;
+
+                const specialSwedenHotTake = "This song would not even qualify if it wasn't Sweden who sent it, let's be honest. This is unlistenable pop slop and I'm not even remotely sorry for this opinion tbh. It's an actual crime that this is going to automatically finish top 10";
+                const swedenCountryCode = "SE";
+                const swedenTriggerChance = 0.2; // Note: This applies if it's not Malta 2025 and is Sweden
+
+                if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
+                    finalHotTake = specialMaltaHotTake;
+                    hotTakeTriggered = true;
+                }
+                else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
+                    finalHotTake = specialSwedenHotTake;
+                    hotTakeTriggered = true;
+                }
+
+                if (!hotTakeTriggered) {
+                    // Randomly choose between general hot takes and ranking takes for specific generation
+                    const useRankingTake = Math.random() < 0.3; // 30% chance for a ranking take
+                    if (useRankingTake && rankingTakes.length > 0) {
+                        finalHotTake = rankingTakes[Math.floor(Math.random() * rankingTakes.length)];
+                    } else {
+                        finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
+                    }
+                }
+
+                specificInfoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
+                specificHotTakeDisplay.textContent = finalHotTake;
+            });
+
+            // Initial population of the year dropdown when the page loads
+            populateYearSelect();
         });
     </script>
 </body>
 </html>
+Key Changes Explained:
+HTML Structure:
+
+A new div with class container wraps the new "specific hot take" section to keep the design consistent.
+
+An <h2> provides a title for this new section.
+
+div class="input-group" holds the labels and select elements for better layout.
+
+<select id="yearSelect"> and <select id="countrySelect"> are added. The countrySelect starts as disabled.
+
+<button id="generateSpecificButton"> is the new button.
+
+<div id="specificHotTakeDisplayContainer"> and its children (specificInfoDisplay, specificHotTake) will show the results from the specific generator.
+
+CSS Styling:
+
+Added styles for .input-group, label within it, and select elements to make them look good with your existing theme. This includes a custom dropdown arrow.
+
+Added section-title for the h2.
+
+Updated min-height for both hotTakeDisplayContainer and specificHotTakeDisplayContainer to 150px to give more room for the info line.
+
+Media query for input-group div to stack dropdowns on smaller screens.
+
+JavaScript Logic:
+
+populateYearSelect() function:
+
+Gets all years from countriesByYear and sorts them in descending order (newest year first).
+
+Adds a default "Select a Year" option.
+
+Creates an <option> element for each year and appends it to yearSelect.
+
+populateCountrySelect(year) function:
+
+Clears existing options in countrySelect.
+
+Adds a default "Select a Country" option.
+
+Disables countrySelect by default.
+
+If a year is provided and exists in countriesByYear, it populates the countrySelect with the countries for that year, sorted alphabetically (ignoring emojis for sorting purposes).
+
+Enables countrySelect after it's populated.
+
+Event Listener for yearSelect: When the user changes the selected year, it calls populateCountrySelect to update the country dropdown and resets the specific hot take display.
+
+Event Listener for generateSpecificButton:
+
+Retrieves the selected year and country from the dropdowns.
+
+Includes a check to ensure both a year and country are selected before generating.
+
+Uses the same hot take logic (including special Malta/Sweden takes) as the random button.
+
+Updates the specificInfoDisplay and specificHotTakeDisplay divs.
+
+Initial Call: populateYearSelect() is called when the DOMContentLoaded event fires to ensure the year dropdown is filled when the page first loads.
+
+Ranking Takes: I've added a separate rankingTakes array and modified the random generation logic to have a 30% chance of picking a ranking-specific hot take, to further diversify the output.
+
+Now you have two distinct ways for users to generate Eurovision hot takes!
+
+
+Could you highlight which parts of the prior response contain the new code?
+
+In future repsonses, to save time and space, we can simply remove the list of responses (hot takes) and countries by year list and simply reference these lines of code instead
+
+
+
+
+No problem, I can definitely highlight the new code for you!
+
+The main additions and changes are within the <style> tags (CSS) and the <script> tags (JavaScript) in the HTML. I'll break it down for you.
+
+New Code in Prior Response
+1. HTML Additions
+The following HTML was added to create the second button, dropdowns, and their display areas:
+
+HTML
+
+    <div class="container">
+        <h2 class="section-title">Get a Hot Take for a Specific Year & Country</h2>
+        <div class="input-group">
+            <div>
+                <label for="yearSelect">Select Year:</label>
+                <select id="yearSelect"></select>
+            </div>
+            <div>
+                <label for="countrySelect">Select Country:</label>
+                <select id="countrySelect" disabled></select>
+            </div>
+        </div>
+        <button id="generateSpecificButton">Generate Specific Hot Take</button>
+        <div id="specificHotTakeDisplayContainer">
+            <div id="specificInfoDisplay" class="specific-year-country-info">Select a year and country!</div>
+            <div id="specificHotTake"></div>
+        </div>
+    </div>
+2. CSS Additions/Modifications
+The following CSS rules were added or modified to style the new elements and improve the layout:
+
+CSS
+
+        /* New container for better layout control */
+        #hotTakeDisplayContainer, #specificHotTakeDisplayContainer {
+            min-height: 150px; /* Increased min-height to accommodate title */
+            display: flex;
+            flex-direction: column; /* Arrange content vertically */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+            word-wrap: break-word;
+        }
+
+        /* Actual hot take text */
+        #hotTake, #specificHotTake {
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #bbbbbb;
+            font-style: italic;
+            margin-top: 10px; /* Space between info and hot take */
+        }
+
+        .year-country-info, .specific-year-country-info { /* Styling for the year and country */
+            font-size: 1.6em; /* Make it significantly bigger */
+            font-weight: 700; /* Make it bold */
+            color: var(--accent-blue); /* A contrasting color */
+            margin-bottom: 10px; /* Space above hot take */
+        }
+
+        .input-group {
+            margin-bottom: 1.5em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em; /* Space between selects */
+        }
+
+        .input-group label {
+            font-size: 1.1em;
+            color: var(--light-text);
+            margin-right: 0.5em;
+            display: block; /* Make label stack on small screens */
+            text-align: left;
+            width: 100%; /* Take full width on small screens */
+            margin-bottom: 0.5em;
+        }
+        .input-group div {
+            flex-basis: 45%; /* Distribute items in two columns */
+            min-width: 150px; /* Ensure minimum width for readability */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content within its flex basis */
+        }
+
+        .input-group select {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background-color: var(--dark-card);
+            color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            -webkit-appearance: none; /* Remove default dropdown arrow for custom styling */
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23bae8e8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.6-6.4H19.6c-5%200-9.3%201.8-13.6%206.4-4.2%204.2-6.4%209.3-6.4%2014.3%200%205%202.1%2010.1%206.4%2014.3l119.2%20119.1c4.2%204.2%209.3%206.4%2014.3%206.4s9.3-2.1%2014.3-6.4l119.2-119.1c4.2-4.2%206.4-9.3%206.4-14.3-.1-5-2.2-10.1-6.4-14.3z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 1em auto;
+            min-width: 180px; /* Ensure selects are wide enough */
+        }
+
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
+        }
+
+        .section-title {
+            color: var(--accent-blue);
+            font-size: 1.8em;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .input-group div {
+                flex-basis: 100%;
+            }
+        }
+3. JavaScript Additions/Modifications
+The JavaScript received the most significant updates. Here's a summary of the new or modified parts:
+
+JavaScript
+
+            // Existing hot takes and ranking takes arrays remain, but will be removed in future responses as requested.
+
+            // Existing countriesByYear object remains, but will be removed in future responses as requested.
+            
+            // New elements for specific generation - Get references to the new HTML elements
+            const yearSelect = document.getElementById('yearSelect');
+            const countrySelect = document.getElementById('countrySelect');
+            const generateSpecificButton = document.getElementById('generateSpecificButton');
+            const specificHotTakeDisplay = document.getElementById('specificHotTake');
+            const specificInfoDisplay = document.getElementById('specificInfoDisplay');
+
+            // Function to populate the year dropdown
+            function populateYearSelect() {
+                const years = Object.keys(countriesByYear).sort((a, b) => b - a); // Sort descending
+                yearSelect.innerHTML = '<option value="">Select a Year</option>'; // Default option
+                years.forEach(year => {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                });
+            }
+
+            // Function to populate the country dropdown based on selected year
+            function populateCountrySelect(year) {
+                countrySelect.innerHTML = '<option value="">Select a Country</option>'; // Default option
+                countrySelect.disabled = true; // Disable until a year is selected
+
+                if (year && countriesByYear[year]) {
+                    const countries = countriesByYear[year].sort((a, b) => {
+                         // Extract country name without emoji for sorting
+                        const nameA = a.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
+                        const nameB = b.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
+                        return nameA.localeCompare(nameB);
+                    });
+                    countries.forEach(country => {
+                        const option = document.createElement('option');
+                        option.value = country;
+                        option.textContent = country;
+                        countrySelect.appendChild(option);
+                    });
+                    countrySelect.disabled = false; // Enable once countries are loaded
+                }
+            }
+
+            // MODIFIED: generateButton event listener now uses a 30% chance for ranking takes
+            generateButton.addEventListener('click', () => {
+                const years = Object.keys(countriesByYear);
+                const selectedYear = years[Math.floor(Math.random() * years.length)];
+
+                const countriesForSelectedYear = countriesByYear[selectedYear];
+                const selectedCountryName = countriesForSelectedYear[Math.floor(Math.random() * countriesForSelectedYear.length)];
+
+                const countryNameWithoutEmoji = selectedCountryName.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
+                const selectedCountryCode = countryCodeMap[countryNameWithoutEmoji];
+
+                let finalHotTake = "";
+                let hotTakeTriggered = false;
+
+                const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
+                const maltaTriggerYear = "2025";
+                const maltaCountryCode = "MT";
+                const maltaTriggerChance = 0.5;
+
+                const specialSwedenHotTake = "This song would not even qualify if it wasn't Sweden who sent it, let's be honest. This is unlistenable pop slop and I'm not even remotely sorry for this opinion tbh. It's an actual crime that this is going to automatically finish top 10";
+                const swedenCountryCode = "SE";
+                const swedenTriggerChance = 0.2;
+
+                if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
+                    finalHotTake = specialMaltaHotTake;
+                    hotTakeTriggered = true;
+                }
+                else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
+                    finalHotTake = specialSwedenHotTake;
+                    hotTakeTriggered = true;
+                }
+
+                if (!hotTakeTriggered) {
+                    // Randomly choose between general hot takes and ranking takes
+                    const useRankingTake = Math.random() < 0.3; // 30% chance for a ranking take
+                    if (useRankingTake && rankingTakes.length > 0) {
+                        finalHotTake = rankingTakes[Math.floor(Math.random() * rankingTakes.length)];
+                    } else {
+                        finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
+                    }
+                }
+
+                infoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
+                hotTakeDisplay.textContent = finalHotTake;
+            });
+
+
+            // NEW: Event listener for year select change
+            yearSelect.addEventListener('change', (event) => {
+                const selectedYear = event.target.value;
+                populateCountrySelect(selectedYear);
+                // Reset specific display when year changes
+                specificInfoDisplay.textContent = "Select a year and country!";
+                specificHotTakeDisplay.textContent = "";
+            });
+
+            // NEW: Event listener for the specific hot take button
+            generateSpecificButton.addEventListener('click', () => {
+                const selectedYear = yearSelect.value;
+                const selectedCountryName = countrySelect.value;
+
+                if (!selectedYear || !selectedCountryName) {
+                    specificInfoDisplay.textContent = "Please select both a year and a country!";
+                    specificHotTakeDisplay.textContent = "";
+                    return;
+                }
+
+                const countryNameWithoutEmoji = selectedCountryName.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
+                const selectedCountryCode = countryCodeMap[countryNameWithoutEmoji];
+
+                let finalHotTake = "";
+                let hotTakeTriggered = false;
+
+                const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
+                const maltaTriggerYear = "2025";
+                const maltaCountryCode = "MT";
+                const maltaTriggerChance = 0.5;
+
+                const specialSwedenHotTake = "This song would not even qualify if it wasn't Sweden who sent it, let's be honest. This is unlistenable pop slop and I'm not even remotely sorry for this opinion tbh. It's an actual crime that this is going to automatically finish top 10";
+                const swedenCountryCode = "SE";
+                const swedenTriggerChance = 0.2; // Note: This applies if it's not Malta 2025 and is Sweden
+
+                if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
+                    finalHotTake = specialMaltaHotTake;
+                    hotTakeTriggered = true;
+                }
+                else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
+                    finalHotTake = specialSwedenHotTake;
+                    hotTakeTriggered = true;
+                }
+
+                if (!hotTakeTriggered) {
+                    // Randomly choose between general hot takes and ranking takes for specific generation
+                    const useRankingTake = Math.random() < 0.3; // 30% chance for a ranking take
+                    if (useRankingTake && rankingTakes.length > 0) {
+                        finalHotTake = rankingTakes[Math.floor(Math.random() * rankingTakes.length)];
+                    } else {
+                        finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
+                    }
+                }
+
+                specificInfoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
+                specificHotTakeDisplay.textContent = finalHotTake;
+            });
+
+            // NEW: Initial population of the year dropdown when the page loads
+            populateYearSelect();
