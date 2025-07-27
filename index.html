@@ -590,16 +590,7 @@
                 else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
                     finalHotTake = specialSwedenHotTake;
                     hotTakeTriggered = true;
-                }
-
-                if (!hotTakeTriggered) {
-                    // Randomly choose between general hot takes and ranking takes
-                    const useRankingTake = Math.random() < 0.3; // 30% chance for a ranking take
-                    if (useRankingTake && rankingTakes.length > 0) {
-                        finalHotTake = rankingTakes[Math.floor(Math.random() * rankingTakes.length)];
-                    } else {
-                        finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
-                    }
+                    
                 }
 
                 infoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
@@ -648,16 +639,6 @@
                 else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
                     finalHotTake = specialSwedenHotTake;
                     hotTakeTriggered = true;
-                }
-
-                if (!hotTakeTriggered) {
-                    // Randomly choose between general hot takes and ranking takes for specific generation
-                    const useRankingTake = Math.random() < 0.3; // 30% chance for a ranking take
-                    if (useRankingTake && rankingTakes.length > 0) {
-                        finalHotTake = rankingTakes[Math.floor(Math.random() * rankingTakes.length)];
-                    } else {
-                        finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
-                    }
                 }
 
                 specificInfoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
