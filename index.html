@@ -509,9 +509,20 @@
                 2025: ["🇦🇱 Albania", "🇦🇲 Armenia", "🇦🇺 Australia", "🇦🇹 Austria", "🇦🇿 Azerbaijan", "🇧🇪 Belgium", "🇧🇦 Bosnia and Herzegovina", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇨🇾 Cyprus", "🇨🇿 Czechia", "🇩🇰 Denmark", "🇪🇪 Estonia", "🇫🇮 Finland", "🇫🇷 France", "🇬🇪 Georgia", "🇩🇪 Germany", "🇬🇷 Greece", "🇭🇺 Hungary", "🇮🇸 Iceland", "🇮🇪 Ireland", "🇮🇱 Israel", "🇮🇹 Italy", "🇱🇻 Latvia", "🇱🇹 Lithuania", "🇲🇹 Malta", "🇲🇩 Moldova", "🇲🇪 Montenegro", "🇳🇱 Netherlands", "🇳🇴 Norway", "🇵🇱 Poland", "🇵🇹 Portugal", "🇷🇴 Romania", "🇸🇲 San Marino", "🇷🇸 Serbia", "🇸🇮 Slovenia", "🇪🇸 Spain", "🇸🇪 Sweden", "🇨🇭 Switzerland", "🇹🇷 Turkey", "🇺🇦 Ukraine", "🇬🇧 United Kingdom"]
             };
 
-             const countryCodeMap = {
+      const countryCodeMap = {
                 "Albania": "AL", "Andorra": "AD", "Armenia": "AM", "Australia": "AU", "Austria": "AT", "Azerbaijan": "AZ", "Belarus": "BY", "Belgium": "BE", "Bosnia and Herzegovina": "BA", "Bulgaria": "BG", "Croatia": "HR", "Cyprus": "CY", "Czechia": "CZ", "Denmark": "DK", "Estonia": "EE", "Finland": "FI", "France": "FR", "North Macedonia": "MK", "Germany": "DE", "Georgia": "GE", "Greece": "GR", "Hungary": "HU", "Iceland": "IS", "Ireland": "IE", "Israel": "IL", "Italy": "IT", "Latvia": "LV", "Lithuania": "LT", "Malta": "MT", "Moldova": "MD", "Monaco": "MC", "Montenegro": "ME", "Netherlands": "NL", "Norway": "NO", "Poland": "PL", "Portugal": "PT", "Romania": "RO", "Russia": "RU", "San Marino": "SM", "Serbia": "RS", "Serbia and Montenegro": "CS", "Slovenia": "SI", "Spain": "ES", "Sweden": "SE", "Switzerland": "CH", "Turkey": "TR", "Ukraine": "UA", "United Kingdom": "GB"
             };
+
+            // --- MOVED THESE CONSTANTS HERE TO BE ACCESSIBLE GLOBALLY ---
+            const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
+            const maltaTriggerYear = "2025";
+            const maltaCountryCode = "MT";
+            const maltaTriggerChance = 0.5;
+
+            const specialSwedenHotTake = "This song would not even qualify if it wasn't Sweden who sent it, let's be honest. This is unlistenable pop slop and I'm not even remotely sorry for this opinion tbh. It's an actual crime that this is going to automatically finish top 10";
+            const swedenCountryCode = "SE";
+            const swedenTriggerChance = 0.2; // Note: This applies if it's not Malta 2025 and is Sweden
+            // -----------------------------------------------------------
 
             const generateButton = document.getElementById('generateButton');
             const hotTakeDisplay = document.getElementById('hotTake');
@@ -544,7 +555,7 @@
 
                 if (year && countriesByYear[year]) {
                     const countries = countriesByYear[year].sort((a, b) => {
-                         // Extract country name without emoji for sorting
+                           // Extract country name without emoji for sorting
                         const nameA = a.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
                         const nameB = b.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]\s*/g, '').trim();
                         return nameA.localeCompare(nameB);
@@ -571,32 +582,23 @@
                 const selectedCountryCode = countryCodeMap[countryNameWithoutEmoji];
 
                 let finalHotTake = "";
-                // hotTakeTriggered is not strictly necessary if you handle the default hot take like this.
 
-                const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
-                const maltaTriggerYear = "2025";
-                const maltaCountryCode = "MT";
-                const maltaTriggerChance = 0.5;
-
-                const specialSwedenHotTake = "This song would not even qualify if it wasn't Sweden who sent it, let's be honest. This is unlistenable pop slop and I'm not even remotely sorry for this opinion tbh. It's an actual crime that this is going to automatically finish top 10";
-                const swedenCountryCode = "SE";
-                const swedenTriggerChance = 0.2;
-
+                // These constants are now accessible from the global scope
                 if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
                     finalHotTake = specialMaltaHotTake;
                 }
                 else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
                     finalHotTake = specialSwedenHotTake;
                 } else {
-                    // --- ADD THIS ELSE BLOCK ---
                     // Select a random hot take from your general hotTakes array
-                    // Assuming you have a 'hotTakes' array defined somewhere
+                    // Make sure 'hotTakes' array is defined in the global scope as well!
                     finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
                 }
 
                 infoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
                 hotTakeDisplay.textContent = finalHotTake;
             });
+
             // Event listener for year select change
             yearSelect.addEventListener('change', (event) => {
                 const selectedYear = event.target.value;
@@ -606,7 +608,6 @@
                 specificHotTakeDisplay.textContent = "";
             });
 
-            // Event listener for the specific hot take button
             // Event listener for the specific hot take button
             generateSpecificButton.addEventListener('click', () => {
                 const selectedYear = yearSelect.value;
@@ -623,16 +624,15 @@
 
                 let finalHotTake = "";
 
-                // ... (Special Malta and Sweden hot take constants, same as above)
-
+                // These constants are now accessible from the global scope
                 if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
                     finalHotTake = specialMaltaHotTake;
                 }
                 else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
                     finalHotTake = specialSwedenHotTake;
                 } else {
-                    // --- ADD THIS ELSE BLOCK ---
                     // Select a random hot take from your general hotTakes array
+                    // Make sure 'hotTakes' array is defined in the global scope as well!
                     finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
                 }
 
