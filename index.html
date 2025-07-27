@@ -571,7 +571,7 @@
                 const selectedCountryCode = countryCodeMap[countryNameWithoutEmoji];
 
                 let finalHotTake = "";
-                let hotTakeTriggered = false;
+                // hotTakeTriggered is not strictly necessary if you handle the default hot take like this.
 
                 const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
                 const maltaTriggerYear = "2025";
@@ -584,18 +584,19 @@
 
                 if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
                     finalHotTake = specialMaltaHotTake;
-                    hotTakeTriggered = true;
                 }
                 else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
                     finalHotTake = specialSwedenHotTake;
-                    hotTakeTriggered = true;
-                    
+                } else {
+                    // --- ADD THIS ELSE BLOCK ---
+                    // Select a random hot take from your general hotTakes array
+                    // Assuming you have a 'hotTakes' array defined somewhere
+                    finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
                 }
 
                 infoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
                 hotTakeDisplay.textContent = finalHotTake;
             });
-
             // Event listener for year select change
             yearSelect.addEventListener('change', (event) => {
                 const selectedYear = event.target.value;
@@ -605,6 +606,7 @@
                 specificHotTakeDisplay.textContent = "";
             });
 
+            // Event listener for the specific hot take button
             // Event listener for the specific hot take button
             generateSpecificButton.addEventListener('click', () => {
                 const selectedYear = yearSelect.value;
@@ -620,24 +622,18 @@
                 const selectedCountryCode = countryCodeMap[countryNameWithoutEmoji];
 
                 let finalHotTake = "";
-                let hotTakeTriggered = false;
 
-                const specialMaltaHotTake = "Serving close to be the worst Maltese entry of the 20s but definitely the second worst";
-                const maltaTriggerYear = "2025";
-                const maltaCountryCode = "MT";
-                const maltaTriggerChance = 0.5;
-
-                const specialSwedenHotTake = "This song would not even qualify if it wasn't Sweden who sent it, let's be honest. This is unlistenable pop slop and I'm not even remotely sorry for this opinion tbh. It's an actual crime that this is going to automatically finish top 10";
-                const swedenCountryCode = "SE";
-                const swedenTriggerChance = 0.2; // Note: This applies if it's not Malta 2025 and is Sweden
+                // ... (Special Malta and Sweden hot take constants, same as above)
 
                 if (selectedYear === maltaTriggerYear && selectedCountryCode === maltaCountryCode && Math.random() < maltaTriggerChance) {
                     finalHotTake = specialMaltaHotTake;
-                    hotTakeTriggered = true;
                 }
                 else if (selectedCountryCode === swedenCountryCode && Math.random() < swedenTriggerChance) {
                     finalHotTake = specialSwedenHotTake;
-                    hotTakeTriggered = true;
+                } else {
+                    // --- ADD THIS ELSE BLOCK ---
+                    // Select a random hot take from your general hotTakes array
+                    finalHotTake = hotTakes[Math.floor(Math.random() * hotTakes.length)];
                 }
 
                 specificInfoDisplay.textContent = `${selectedCountryName} ${selectedYear}`;
